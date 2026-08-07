@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro do Atleta Dashboard</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Registro do Atleta</h1>
+        <p id="generatedAt">Painel local</p>
+      </div>
+      <div class="controls">
+        <label>
+          API local
+          <input id="apiBase" value="http://127.0.0.1:8000">
+        </label>
+        <label>
+          Responsável
+          <input id="reviewerName" placeholder="Nome">
+        </label>
+        <label>
+          Token
+          <input id="apiToken" type="password" placeholder="opcional">
+        </label>
+        <button id="loadApi" type="button">Atualizar</button>
+        <button id="loadDemo" type="button">Demo sintética</button>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Seções">
+      <button class="tab active" data-view="overview" type="button">Visão geral</button>
+      <button class="tab" data-view="report" type="button">Relatório</button>
+      <button class="tab" data-view="macrocycle" type="button">Macrociclo</button>
+      <button class="tab" data-view="alerts" type="button">Briefing</button>
+      <button class="tab" data-view="episodes" type="button">Episódios</button>
+      <button class="tab" data-view="reviews" type="button">Revisões</button>
+      <button class="tab" data-view="athletes" type="button">Atletas</button>
+      <button class="tab" data-view="quality" type="button">Qualidade</button>
+    </nav>
+
+    <main>
+      <div id="appStatus" class="app-status">Carregando painel local...</div>
+      <section id="overview" class="view active">
+        <div id="summaryCards" class="metric-grid"></div>
+        <section class="section-gap">
+          <h2>Progresso das revisÃµes</h2>
+          <div id="reviewProgress" class="progress-grid"></div>
+        </section>
+        <div class="grid two">
+          <section>
+            <h2>Episódios por novidade</h2>
+            <div id="noveltyBars" class="bars"></div>
+          </section>
+          <section>
+            <h2>Episódios por severidade</h2>
+            <div id="severityBars" class="bars"></div>
+          </section>
+          <section>
+            <h2>Alertas por tipo</h2>
+            <div id="typeBars" class="bars"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="report" class="view">
+        <div id="operationalReport" class="report-layout"></div>
+      </section>
+
+      <section id="macrocycle" class="view">
+        <div id="macrocyclePanel" class="macrocycle-layout"></div>
+      </section>
+
+      <section id="alerts" class="view">
+        <div class="filters">
+          <label>Buscar <input id="alertSearch" placeholder="estado, atleta ou resumo"></label>
+          <label>Estado <select id="severityFilter"><option value="">Todos</option></select></label>
+        </div>
+        <div id="recentAlerts" class="table-wrap"></div>
+      </section>
+
+      <section id="episodes" class="view">
+        <div id="episodeTable" class="table-wrap"></div>
+      </section>
+
+      <section id="quality" class="view">
+        <div id="qualityBars" class="bars"></div>
+      </section>
+
+      <section id="athletes" class="view">
+        <div class="filters">
+          <label>Buscar atleta, alias ou ID <input id="athleteSearch" placeholder="nome, OLY-ATH ou alias"></label>
+          <button id="loadAthletes" type="button">Buscar</button>
+        </div>
+        <div id="athleteCatalog" class="table-wrap"></div>
+        <div class="section-gap">
+          <h2>Possiveis duplicatas</h2>
+          <div id="duplicatePanel" class="review-grid"></div>
+        </div>
+      </section>
+
+      <section id="reviews" class="view">
+        <div class="review-toolbar">
+          <button class="mode active" data-review-mode="identity" type="button">Identidade</button>
+          <button class="mode" data-review-mode="dates" type="button">Datas</button>
+          <button class="mode" data-review-mode="episodes" type="button">Episódios</button>
+          <button class="mode" data-review-mode="literature" type="button">Literatura</button>
+        </div>
+        <div id="reviewSummary" class="review-summary"></div>
+        <div id="reviewStatus" class="notice"></div>
+        <div id="reviewPanel" class="review-grid"></div>
+      </section>
+    </main>
+
+    <datalist id="athleteOptions"></datalist>
+    <script src="./app.js"></script>
+  </body>
+</html>

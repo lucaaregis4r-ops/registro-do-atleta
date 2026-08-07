@@ -1,0 +1,39 @@
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_tmp*/
+.validation_tmp*/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Dados locais e artefatos operacionais nunca devem ser publicados.
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.xlsx
+*.xls
+*.csv
+*.zip
+*.bak
+*.log
+
+# Credenciais e chaves comuns.
+*.pem
+*.key
+*credentials*.json
+*service-account*.json
+
+# Sistema e IDE.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

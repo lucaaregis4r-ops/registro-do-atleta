@@ -1,0 +1,27 @@
+[project]
+name = "registro-do-atleta"
+version = "0.1.0"
+description = "Registro longitudinal e auditavel de dados de atletas."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+api = ["fastapi>=0.115", "uvicorn>=0.30"]
+streamlit = ["streamlit>=1.36"]
+
+[project.scripts]
+registro-do-atleta = "registro_atleta.cli:main"
+
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

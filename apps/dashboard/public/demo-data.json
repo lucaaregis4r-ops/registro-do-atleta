@@ -1,0 +1,98 @@
+{
+  "alert_episodes": [
+    {
+      "alert_type": "psr_high_pain",
+      "athlete_name": "Atleta Demo 01",
+      "current_severity": "high",
+      "episode_status": "active",
+      "last_seen_at": "2026-07-14",
+      "novelty_status": "new",
+      "priority_score": 85
+    },
+    {
+      "alert_type": "physio_training_restriction",
+      "athlete_name": "Atleta Demo 02",
+      "current_severity": "medium",
+      "episode_status": "active",
+      "last_seen_at": "2026-07-13",
+      "novelty_status": "ongoing",
+      "priority_score": 45
+    }
+  ],
+  "alerts_by_severity": [
+    {"label": "medium", "value": 8},
+    {"label": "high", "value": 3},
+    {"label": "low", "value": 2}
+  ],
+  "alerts_by_type": [
+    {"label": "psr_high_pain", "value": 5},
+    {"label": "psr_fatigue_above_individual_baseline", "value": 4},
+    {"label": "physio_training_restriction", "value": 4}
+  ],
+  "episodes_by_novelty": [
+    {"label": "new", "value": 4},
+    {"label": "ongoing", "value": 6},
+    {"label": "resolved", "value": 1}
+  ],
+  "episodes_by_severity": [
+    {"label": "medium", "value": 7},
+    {"label": "high", "value": 3},
+    {"label": "low", "value": 1}
+  ],
+  "generated_at": "2026-07-14T00:00:00Z",
+  "latest_briefing_items": [
+    {
+      "display_order": 1,
+      "episode_id": "demo-episode-1",
+      "headline": "Novo: Atleta Demo 01 - psr_high_pain (high).",
+      "included_in_main_brief": 1,
+      "priority_bucket": "new",
+      "priority_score": 85,
+      "reference_date": "2026-07-14",
+      "report_status": "success"
+    },
+    {
+      "display_order": 2,
+      "episode_id": "demo-episode-2",
+      "headline": "Persistente: Atleta Demo 02 - physio_training_restriction (medium).",
+      "included_in_main_brief": 1,
+      "priority_bucket": "ongoing",
+      "priority_score": 45,
+      "reference_date": "2026-07-14",
+      "report_status": "success"
+    }
+  ],
+  "quality_by_type": [
+    {"label": "invalid_date", "value": 4},
+    {"label": "identity_pending", "value": 3}
+  ],
+  "recent_alerts": [
+    {
+      "alert_type": "psr_high_pain",
+      "athlete_name": "Atleta Demo 01",
+      "human_summary": "Dor autorrelatada acima do limite configurado.",
+      "reference_date": "2026-07-10",
+      "severity": "high"
+    },
+    {
+      "alert_type": "physio_training_restriction",
+      "athlete_name": "Atleta Demo 02",
+      "human_summary": "Restricao de treino registrada pela fisioterapia.",
+      "reference_date": "2026-07-11",
+      "severity": "medium"
+    }
+  ],
+  "summary": {
+    "alert_episodes_active": 11,
+    "alerts_open": 13,
+    "athletes": 42,
+    "briefing_appendix_items": 5,
+    "briefing_main_items": 2,
+    "identity_pending": 6,
+    "literature_approved": 5,
+    "physical_assessments": 81,
+    "physio_cases": 7,
+    "psr_responses": 320,
+    "quality_open": 7
+  }
+}

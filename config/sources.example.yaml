@@ -1,0 +1,7 @@
+# Exemplo exclusivamente local, sem IDs ou URLs externos.
+sources: []
+
+historical_import:
+  root: "data/input"
+  include:
+    - "*.xlsx"
