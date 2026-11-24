@@ -24,6 +24,10 @@ sh scripts/start_demo.sh
 
 Abra `http://127.0.0.1:8080` e selecione **Demo sintética**. A demonstração é somente leitura e usa personagens e indicadores fictícios.
 
+![Painel do Registro do Atleta com dados inteiramente fictícios](docs/screenshots/registro-atleta-demo.png)
+
+Captura da demonstração de leitura; nenhum dado pessoal real é exibido.
+
 Também é possível servir o dashboard diretamente:
 
 ```bash
