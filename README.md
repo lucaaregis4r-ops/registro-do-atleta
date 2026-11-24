@@ -1,14 +1,14 @@
 # Registro do Atleta
 
-Projeto local para organizar fontes esportivas dispersas em um registro longitudinal, auditavel e revisavel dos atletas.
+Projeto local para organizar fontes esportivas em um registro longitudinal, auditável e revisável dos atletas.
 
-O foco do projeto nao e um chatbot. O produto central e uma base confiavel: ingestao com preservacao das fontes, normalizacao por dominio, resolucao de identidade com revisao humana, alertas deterministicos, relatorios e operacao resiliente em SQLite.
+A base preserva as fontes originais, normaliza os dados por domínio e permite revisar identidades, datas, possíveis duplicidades e alertas. Também gera relatórios e opera localmente em SQLite.
 
-> Esta edicao publica contem somente codigo e dados sinteticos de demonstracao. Planilhas, bancos, snapshots, nomes de atletas, credenciais e configuracoes reais nao fazem parte do repositorio.
+> Esta edição pública contém apenas código e dados sintéticos de demonstração. Planilhas, bancos, snapshots, nomes de atletas, credenciais e configurações reais não fazem parte do repositório.
 
-## Demo em dois minutos
+## Demonstração
 
-Requisito: Python 3.12 ou superior.
+Requer Python 3.12 ou superior.
 
 No Windows:
 
@@ -22,29 +22,29 @@ No Linux ou macOS:
 sh scripts/start_demo.sh
 ```
 
-Abra `http://127.0.0.1:8080` e selecione **Demo sintetica**. Essa experiencia e somente leitura e usa personagens e indicadores ficticios.
+Abra `http://127.0.0.1:8080` e selecione **Demo sintética**. A demonstração é somente leitura e usa personagens e indicadores fictícios.
 
-Tambem e possivel executar diretamente:
+Também é possível servir o dashboard diretamente:
 
 ```bash
 python -m http.server 8080 --bind 127.0.0.1 --directory apps/dashboard
 ```
 
-## O que esta implementado
+## O que está implementado
 
-- inventario e hashing SHA-256 de fontes historicas sem alterar os arquivos brutos;
-- snapshots e staging idempotente em SQLite;
-- cadastro longitudinal e resolucao auditavel de identidade;
-- normalizacao de PSR, fisioterapia e avaliacoes fisicas;
-- achados de qualidade, datas efetivas e deteccao de possiveis duplicidades;
-- alertas deterministicos, episodios e briefing orientado por mudancas;
-- filas de revisao humana para identidade, datas, duplicidades, alertas e literatura;
-- API local FastAPI e dashboard responsivo;
-- backup, restauracao verificada, lock de processo e relatorios operacionais;
-- integracao opcional com LLM, desabilitada por padrao e sem autoridade sobre persistencia critica;
-- gate metodologico antes de analises estatisticas avancadas.
+- Inventário e hash SHA-256 de fontes históricas, sem alterar os arquivos brutos.
+- Snapshots e staging idempotente em SQLite.
+- Cadastro longitudinal e resolução auditável de identidade.
+- Normalização de PSR, fisioterapia e avaliações físicas.
+- Verificações de qualidade, datas efetivas e possíveis duplicidades.
+- Alertas determinísticos, episódios e briefings baseados em mudanças.
+- Filas de revisão humana para identidades, datas, duplicidades, alertas e literatura.
+- API local em FastAPI e dashboard responsivo.
+- Backup, restauração verificada, lock de processo e relatórios operacionais.
+- Integração opcional com LLM, desativada por padrão e sem autoridade sobre a persistência crítica.
+- Gate metodológico antes de análises estatísticas avançadas.
 
-## Arquitetura resumida
+## Arquitetura
 
 ```text
 fontes brutas (somente leitura)
@@ -53,18 +53,18 @@ fontes brutas (somente leitura)
  snapshots + staging SQLite
           |
           v
- identidade auditavel ----> revisao humana
+ identidade auditável ----> revisão humana
           |
           v
- dominios normalizados ----> qualidade e duplicidades
+ domínios normalizados ----> qualidade e duplicidades
           |
           v
- alertas deterministicos -> episodios -> briefing
+ alertas determinísticos -> episódios -> briefing
           |
           +---------------> API local -> dashboard
 ```
 
-Mais detalhes em [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Consulte [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) para mais detalhes.
 
 ## Instalar e testar
 
@@ -77,26 +77,26 @@ pip install -e ".[dev,api]"
 python -m pytest -q
 ```
 
-A API pode ser iniciada com um banco local vazio:
+A API também pode iniciar com um banco local vazio:
 
 ```bash
 registro-do-atleta run-api --database data/database/registro_atleta.db
 ```
 
-Depois, acesse `http://127.0.0.1:8000/dashboard/`. Para operacao real, configure fontes proprias e leia primeiro [docs/PRIVACIDADE_E_DADOS.md](docs/PRIVACIDADE_E_DADOS.md).
+Depois, acesse `http://127.0.0.1:8000/dashboard/`. Para usar dados reais, configure as fontes e leia [docs/PRIVACIDADE_E_DADOS.md](docs/PRIVACIDADE_E_DADOS.md).
 
-## Principios de projeto
+## Princípios do projeto
 
-1. Fonte bruta e imutavel.
-2. Persistencia critica e deterministica e auditavel.
-3. Decisoes ambiguas passam por revisao humana.
-4. LLM resume e explica; nao decide sozinho o que vira verdade no banco.
-5. Analise avancada so e liberada depois de um gate de qualidade e metodologia.
+1. As fontes brutas são imutáveis.
+2. A persistência crítica é determinística e auditável.
+3. Decisões ambíguas passam por revisão humana.
+4. O LLM pode resumir e explicar, mas não decide sozinho o que será registrado como fato.
+5. Análises avançadas só ficam disponíveis depois da verificação de qualidade e metodologia.
 
 ## Estado do projeto
 
-Este e um projeto em desenvolvimento e uma demonstracao tecnica, nao um dispositivo medico nem uma ferramenta de decisao clinica. Os limites e alertas de exemplo nao devem ser usados como recomendacao profissional.
+Este projeto está em desenvolvimento e é uma demonstração técnica. Não é um dispositivo médico nem uma ferramenta de decisão clínica. Limites e alertas de exemplo não devem ser usados como recomendação profissional.
 
-## Licenca
+## Licença
 
-Distribuido sob a [Licenca MIT](LICENSE). E permitido usar, copiar, modificar e redistribuir o codigo, inclusive em projetos comerciais, desde que o aviso de autoria e a licenca sejam preservados.
+Distribuído sob a [Licença MIT](LICENSE). É permitido usar, copiar, modificar e redistribuir o código, inclusive em projetos comerciais, desde que o aviso de autoria e a licença sejam preservados.
